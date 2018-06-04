@@ -40,6 +40,29 @@ namespace MyNote.NoteManegement
             this.ShowNoteList();
         }
 
+        private void btnD_Click(object sender, EventArgs e)
+        {
+            MyNoteEntities7 db = new MyNoteEntities7();
+            if (MessageBox.Show("Do you want to delete?", "Confirm", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                for (int i = 0; i < this.lstNotes.SelectedRows.Count; i++)
+                {
+                    var row = this.lstNotes.SelectedRows[i];
+                    var item = (Note)row.DataBoundItem;
+                    try
+                    {
+                        Note @student = db.Notes.Find(item.id);
+                        db.Notes.Remove(@student);
+                        db.SaveChanges();
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Cannot delete class: " + item);
+                    }
+                }
+            }
+            this.ShowNoteList();
+        }
     }
 }
