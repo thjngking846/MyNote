@@ -64,5 +64,50 @@ namespace MyNote.NoteManegement
             }
             this.ShowNoteList();
         }
+
+        private void lstNotes_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.lstNotes.SelectedRows.Count == 1)
+            {
+                var row = this.lstNotes.SelectedRows[0];
+                var item = (Note)row.DataBoundItem;
+
+                var form = new FormEdit(item);
+                form.ShowDialog();
+                this.ShowNoteList();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (this.lstNotes.SelectedRows.Count == 1)
+            {
+                var row = this.lstNotes.SelectedRows[0];
+                var item = (Note)row.DataBoundItem;
+
+                var form = new FormEdit(item);
+                form.ShowDialog();
+                this.ShowNoteList();
+            }
+        }
+
+        private void dtpS_ValueChanged_1(object sender, EventArgs e)
+        {
+            MyNoteEntities7 db = new MyNoteEntities7();
+            lstNotes.DataSource = db.Notes.Where(x => x.Datetodo == dtpS.Value).ToList();
+        }
+
+
+
+        private void tbFind_TextChanged(object sender, EventArgs e)
+        {
+        }
+        private void dtpS_ValueChanged(object sender, EventArgs e)
+        {
+        }
+        private void mcS_DateChanged(object sender, DateRangeEventArgs e)
+        {
+        }
+
     }
 }
