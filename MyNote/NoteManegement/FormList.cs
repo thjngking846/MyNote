@@ -28,8 +28,18 @@ namespace MyNote.NoteManegement
             this.lstNotes.DataSource = db.Notes.ToList();
         }
 
-        
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            var form = new FormAdd();
+            form.ShowDialog();
+            this.ShowNoteList();
+        }
 
-        
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ShowNoteList();
+        }
+
+
     }
 }
