@@ -74,7 +74,7 @@ namespace MyNote.NoteManegement
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //comment
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
