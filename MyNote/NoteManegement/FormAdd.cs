@@ -56,7 +56,7 @@ namespace MyNote.NoteManegement
                 MessageBox.Show(ex.Message);
             }
         }
-        //comment
+        //comment demo here
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
